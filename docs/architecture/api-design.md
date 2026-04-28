@@ -45,6 +45,64 @@ Error:
 - `POST /auth/logout`
 - `GET /auth/me`
 
+Phase 2 implements:
+
+- `POST /auth/register`
+- `POST /auth/login`
+- `POST /auth/refresh`
+- `POST /auth/logout`
+- `GET /auth/me`
+
+Register request:
+
+```json
+{
+  "full_name": "Vaishali Sharma",
+  "email": "vaishali@example.com",
+  "phone": "9876543210",
+  "password": "StrongPass123"
+}
+```
+
+Login request:
+
+```json
+{
+  "phone": "9876543210",
+  "password": "StrongPass123"
+}
+```
+
+Auth response:
+
+```json
+{
+  "data": {
+    "user": {
+      "id": "uuid",
+      "full_name": "Vaishali Sharma",
+      "email": "vaishali@example.com",
+      "phone": "9876543210",
+      "role": "customer"
+    },
+    "tokens": {
+      "access_token": "jwt",
+      "refresh_token": "opaque-token",
+      "expires_in": 900
+    }
+  },
+  "meta": {}
+}
+```
+
+Refresh/logout request:
+
+```json
+{
+  "refresh_token": "opaque-token"
+}
+```
+
 Post-MVP:
 
 - `POST /auth/send-otp`
@@ -58,11 +116,33 @@ Customer/provider/admin self-service:
 - `GET /users/me`
 - `PATCH /users/me`
 
+Profile update request:
+
+```json
+{
+  "full_name": "Updated Name",
+  "email": "updated@example.com"
+}
+```
+
 Admin:
 
 - `GET /admin/users`
 - `GET /admin/users/:id`
 - `PATCH /admin/users/:id/status`
+
+Phase 2 implements:
+
+- `GET /admin/users`
+- `PATCH /admin/users/:id/status`
+
+Status update request:
+
+```json
+{
+  "is_active": false
+}
+```
 
 ## City APIs
 

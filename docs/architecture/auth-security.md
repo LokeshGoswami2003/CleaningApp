@@ -41,10 +41,13 @@ Refresh tokens:
 - Rotated on use.
 - Revocable on logout.
 - Reuse detection should revoke the token family when possible.
+- Phase 2 starts with opaque refresh tokens stored as SHA-256 hashes.
+- Phase 2 rotates refresh tokens through `/auth/refresh` and revokes tokens through `/auth/logout`.
 
 ## Password Requirements
 
-- Passwords must be hashed with Argon2 or bcrypt.
+- Passwords must be hashed with Argon2, bcrypt, or an approved bcrypt-compatible implementation.
+- Phase 2 uses `bcryptjs` to avoid native install/build problems on Windows.
 - Plaintext passwords must never be logged or stored.
 - Login errors should be generic.
 - Rate limiting should be added to auth routes before beta release.
@@ -83,5 +86,6 @@ Requirements:
 - No secrets in the repository.
 - Production logs must avoid passwords, tokens, full addresses where possible, and payment secrets.
 - Admin APIs require strict role checks.
+- Phase 2 protects admin user routes with the `admin` role.
 - Destructive admin actions should be soft deletes or status changes where practical.
 - CORS should allow only known client origins outside local development.

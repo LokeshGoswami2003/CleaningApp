@@ -20,11 +20,27 @@ Copy-Item .env.example .env
 npm run dev
 npm run build
 npm run test
+npm run test:coverage
 npm run lint
 npm run prisma:generate
 npm run prisma:migrate:dev
 npm run prisma:migrate:deploy
 npm run db:seed
+```
+
+Auth Phase 2 checks from root:
+
+```powershell
+npm run prisma:generate --workspace server
+npm run test --workspace server
+npm run build --workspace server
+```
+
+Run both Phase 2 apps:
+
+```powershell
+npm run dev --workspace server
+npm run dev --workspace client-web
 ```
 
 ## Client Web

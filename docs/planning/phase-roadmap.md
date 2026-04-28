@@ -54,6 +54,8 @@ Non-goals:
 
 ## Phase 2: Auth, Users, And Sessions
 
+Status: completed on 2026-04-28.
+
 Goal: implement secure identity and role-based access.
 
 Deliverables:

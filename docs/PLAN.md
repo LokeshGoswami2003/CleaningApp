@@ -83,12 +83,14 @@ Build the smallest reliable marketplace core:
 
 - [Recommended Project Structure](./setup/project-structure.md)
 - [Phase 1 Setup Runbook](./setup/phase-1-setup.md)
+- [Phase 2 Auth Runbook](./setup/phase-2-auth-runbook.md)
 
 ## Operating Docs
 
 - [Development Commands](./development/commands.md)
 - [Development Workflow](./development/workflow.md)
 - [Database Flow](./database/local-and-aws-flow.md)
+- [Database Provider Portability](./database/provider-portability.md)
 - [Architecture Decisions](./decisions/README.md)
 - [Journey Log](./journey/README.md)
 

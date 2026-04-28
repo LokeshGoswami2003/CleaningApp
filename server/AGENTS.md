@@ -33,6 +33,8 @@ modules/example/
 - Do not change booking status outside the booking workflow service.
 - Do not trust payment success from a client response.
 - Add tests for every new behavior.
+- Keep `prebuild` wired to `npm run test` so backend tests run before every backend build.
+- Admin bootstrap uses `npm run db:seed` and reads admin credentials from environment variables.
 
 ## Commands
 
@@ -42,9 +44,9 @@ Common commands after dependencies are installed:
 npm run dev
 npm run build
 npm run test
+npm run test:coverage
 npm run lint
 npm run prisma:generate
 npm run prisma:migrate:dev
 npm run prisma:migrate:deploy
 ```
-

@@ -4,6 +4,8 @@
 
 Each implementation phase must end with tests for the behavior introduced in that phase. The most important tests are around auth, authorization, booking transitions, assignment attempts, payment verification, and idempotency.
 
+Backend tests must run before backend builds. The `server` package uses npm's `prebuild` hook so `npm run build --workspace server` runs `npm run test` first.
+
 ## Backend Test Types
 
 Unit tests:
@@ -114,3 +116,19 @@ A phase is not complete until:
 - Database migrations run cleanly from scratch.
 - API changes are documented.
 - Known limitations are recorded.
+
+## Coverage Planning
+
+Coverage should grow by phase. Do not chase a vanity percentage at the cost of useful tests, but do keep the most dangerous logic covered.
+
+Targets:
+
+- Phase 2 auth/user/session services: high coverage for password hashing, token creation, login failures, duplicate users, and role guards.
+- Phase 3 catalog/provider/address modules: route and ownership coverage for CRUD behavior.
+- Phase 4 booking/assignment modules: highest coverage in the backend, especially status transitions and invalid actor checks.
+- Phase 5 payment/review modules: high coverage for idempotency, signature verification, and review eligibility.
+
+Build gate:
+
+- Backend build is blocked by failing backend tests.
+- Coverage reports can be generated with `npm run test:coverage --workspace server`.
